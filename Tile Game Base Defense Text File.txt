@@ -1,0 +1,187 @@
+2D Base Defense 
+
+-Features
+	-Map is Zoomable
+	-MiniMap
+	-? Chests to store goods (gold, weapons, armor, potions) 
+	-Different level terrain
+	-Buildable turrets that can be upgrades and destroyed and level up
+	-Waves
+	-Train Units
+	-Every Unit has a name (from json)
+	-Once you lose, you can spam click enter to get straight back into the game
+	-Screenshots
+	-Renamable units
+	-Units can earn titles based off things they do
+	-Units level up, even basic enemies and allies, increasing their stats and giving them new effects/spells
+	-Different forms of death
+		-Default death leaves a body that can be revived within a certain time period
+		-Stasis death leaves a body that doesn't decay
+		-Permanent Death, doesn't leave a body, can't be revived
+	-? Sacrifice Units and harness their power
+	-Capture Units and.... put them in cages
+		-To unlock new abilities/unit types through study
+	-You can select individual units and play them with mouse and directional keys
+	-You can create battalions (on screen for easy selection)
+		-add
+		-remove
+	-You can select up to x units at once and give commands with drag square select zone or indivudally selecting them
+		-Attack move
+		-Move
+		-Hold
+		-Patrol
+	-You can create battalions (on screen for easy selection) that work the same way
+		-add
+		-remove
+*	-groups get an estimated level based on a mix of the normal units levels and the heroes levels in the group (heroes count for more)
+	-Every 5 Waves,you have a pause to collect and do things outside the base
+	-Things outside the base
+		-the potential to unlock new units
+	
+-POSSIBLE FUTURE FEATURES
+	-Farms? EXTRA SUSTAINABLE FEATURE IF I GET STUCK/BORED OR DONE WITH THE REST OF THE GAME
+	-Infinite Waves
+		-How to make this interesting and not noticeable?
+
+------------------------------------------------------------------------------------
+
+
+							THE GAME
+
+
+
+-Phase 1  -  Start  -  SETTING UP YOUR BASE
+	-Select a hero
+	-Start in a base with
+		-units, towers/sentries/turrets, walls and your selected hero
+		-500 gold to do with what you will
+		-you can save the state of your level 1 game before you click ready to load in your preffered start
+		-hit READY to launch game
+
+
+-Phase 2  -  WAVES  -  DEFENDING YOUR BASE
+	-Wave 1
+		-Basic units come at the base from Right Side
+		-If player doesn't change anything, they will lose quite a few units but no real damage
+
+	-Wave 2
+		-Basic units come at the base from Top Side
+		-If player is still not doing anything, towers should start to drop
+
+	-Wave 3
+		-Basic units come at the base from Left Side
+		-If player is still not doing anything, units run over the base
+
+	-Wave 4
+		-Basic units come at the base from Bottom Side
+	 	-If player is still not doing anything, lose
+
+	-Wave 5
+		-Basic units come at the base from Right and Left Side
+	 	-If player is still not doing anything, lose
+
+	-Wave 5
+		-Basic units come at the base from Top and Bottom Side
+	 	-If player is still not doing anything, lose
+
+------------------------------------------------------------------------------------
+
+
+-Units
+	-Stats
+		-Health
+		-Damage
+		-Armor
+		-MR
+		-Attack Speed
+		-Attack Type
+			-Melee
+			-Ranged
+				-Single
+				-Piercing
+					-Varying Penetration
+				-Aoe
+					-Varying Radius
+			-Zone (leaves a trail that damages or hurts enemies, can apply to any damage type)
+		-Movement Speed
+
+
+
+	-Catergories
+		-Hero 
+			-More Abilities
+			-Better Stats
+			-Faster Leveling
+			-Bigger Average Models
+		-Basic
+			-Base Leveling
+			-Minimum Abilities
+			-Smaller Models
+			-Base Stats
+		-Advanced
+			-Better Stats
+			-Better Abilities
+			-Base Leveling
+			-Smaller Models
+
+	-Starter Units
+		
+		
+	-Friendly Units
+		-Gold Searchers/Scavengers, collect dropped items and take them to chests
+			-Fast
+			-Low damage in certain situations
+		-Builders
+			-The more it builds, the better it gets at building
+			-The more it repairs, the better it gets at repairing
+	
+	-Enemy Unit Types
+		-Mages
+			-at higher levels has great aoe and utility
+			-can either go high close range dps
+			-or long range burst
+		-Rushers
+			-Very fast
+			-High damage
+			-Low health
+		-Saboteurs
+			-rushes tower and other buildings
+			-can be bombers
+			-or looters
+			-or rammers
+				-slow as
+				-high damage
+				-slow
+		-Assassins - Advanced Unit
+			-The Feared Ones
+			-Rare and even the weak ones randomly select high priority targets and have a high chance of killing them
+			-Big reason for player needing control of units to outplay them and get rid of them before they cause massive damage
+			-If one kills 20units it will run out and try and escape to return next round instead of a level 1
+			-Has abilities that allow it deceptive movement and skill dodging
+			-Very High Single Target Damage and Poison
+
+
+-Spells
+	-Available to all
+		-Revive
+		-aoe Fireball with lasting burn
+		-Ice Blast that slows or freezes
+		-Piercing shot that damages everything in a line
+		-Knockback 
+			-Single
+			-Aoe
+			-Cone
+		-Shield
+			-Zone
+			-Single Unit
+			-Multiple Units
+		-Blink
+			-Teleports a short distance
+		-Teleport
+			-Teleports to a location
+			-Long cooldown
+
+	
+-Far Future
+	
+	-self supporting villages and communities

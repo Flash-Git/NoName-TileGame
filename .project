@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Tile Game - Alpha - Git</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Tile Game - Info and Ideas.txt</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Dropbox/Tilegame%20stuff/Tile%20Game%20-%20Info%20and%20Ideas.txt</locationURI>
+		</link>
+		<link>
+			<name>Tile Game - To do list.txt</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Dropbox/Tilegame%20stuff/Tile%20Game%20-%20To%20do%20list.txt</locationURI>
+		</link>
+		<link>
+			<name>Tile Game - Version Log.txt</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Dropbox/Tilegame%20stuff/Tile%20Game%20-%20Version%20Log.txt</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
