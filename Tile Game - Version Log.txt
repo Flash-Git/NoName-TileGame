@@ -1,0 +1,263 @@
+Tile Game - Alpha v1.0 - Casting issue
+-Discovered cause of one entity having 1 target when cast as entity and another when cast as creature
+
+Tile Game - Alpha v1.1 - Fixed casting issue
+-Aim to add ranges to attacks
+
+TODO list
+-Create list of nodes on world load, rather than creating each of them, just validate their state
+
+Tile Game - Alpha v1.2
+-Added projectiles
+-Cleaned up Entity hierarchy
+
+Tile Game - Alpha v1.3 - The Game
+-Now have a real game engine
+-Cleaned EntityManager, allow you to ask for different/multiple types
+
+Tile Game - Alpha v1.4 - INTERFACES
+-Added interfaces
+-they try to shoot through walls
+add line of sight
+
+Tile Game - Alpha v1.5 
+-line of sight and attack ranges
+add deltaTime functionality
+
+Tile Game - Alpha v1.6
+-Added goalX goalY for player move commands and Hostile end goals
+-Failed deltatime integration
+-added idle function
+-fixed projectile collision
+-cleaned creature class
+
+Add goalx goaly functionality
+fix idle stuttering
+implement interfaces fully
+clean entity manager again
+
+Tile Game - Alpha v1.7
+-Added Waves
+-Added player shooting with mouse
+-Added score
+-Updated towers perform action structure to match creature
+-Added Levels and basic scaling
+
+fix entities getting stuck on each other
+improve score
+fix scope of all variables
+add entity levelling
+  maybe even projectiles (so that could be a way they get buffed by spells ie: projectiles fired are 2 levels stronger
+add tool tips for damage and health
+add energy shield 
+Fix AI pathing (lag)
+
+Tile Game - Alpha v1.8
+-Added Mudcrabs
+
+Tile Game - Alpha v1.9
+-Added tempX, tempY
+-Added pushing
+
+Tile Game - Alpha v1.10
+idk
+
+
+Tile Game - Alpha v1.11
+-Got Frame independence
+
+Tile Game - Alpha v1.12
+-UI Update
+-Buttons
+
+Tile Game - Alpha v1.12-14
+-Improving buttons and adding cursor selection
+-Adding functionality to UI
+-Improved state management
+
+Tile Game - Alpha v1.15-16
+-Added Health and EXP to HUD 
+-Added crazy tick functionality to UI
+-Added exp
+
+Tile Game - Alpha v1.17
+-Shuffled Variables about
+-Added health regen
+
+Tile Game - Alpha v1.18
+-Added Builder
+-Added building capabilities (kinda)
+-Added Stats rectangle and moved UI around a bit
+
+Tile Game - Alpha v1.19
+-Added Chunks, bit messy but hopefully better overall
+
+Tile Game - Alpha v1.20-21
+-Entity Variables
+-Pathfinding cleaning
+
+Tile Game - Alpha v1.22
+-Added melee attacks
+-Added chunk functionality
+-Added Wizards
+-Hired Andrew
+-Fixed Movement
+
+Tile Game - Alpha v1.23
+-Messed with projectiles
+
+Tile Game - Alpha v1.24 - 23/05/16
+-Started messing with possession of other units
+-Builders build properly
+-UICursor's have been advanced
+
+Tile Game - Alpha v1.25 - 24/05/16
+-Found cool bug, placing multiple entities on the exact same place doubles "their" speed
+-UiManager stuff
+-UiCursor can be changed in game
+-UICursor added functionality
+-Some Barracks code
+-Rethinking how commands are going to work (rather than putting commands into the classes, put them into the UIManagerRectangle thingy instead?)
+
+Tile Game - Alpha v1.26 - 24/05/16
+-Split UserInterface into 2, GameUserInterface and MenuUserInterface
+-Created UserInterface class, similar to how states work
+-Moved and modified all the UI code outside of the states
+-Somehow made all this work
+
+Tile Game - Alpha v1.27 - 25/05/16
+-Removed Player as a character
+-Allowed all entities to be selected and controlled and camera focused
+-Attempted to switch to IntelliJ after trying to update eclipse and being unable to change theme
+-Switched back to eclipse because file reader used to load world (but not SpriteSheet) is broken in intelliJ
+
+Tile Game - Alpha v1.28 - 27/05/16
+-Added Unit Class between Entity and Creature/Buildings
+-Changed how commands work
+-Added EntityVisitor to replace instanceofs
+-Now tick entities in entityManager in a much more controlled and correct way
+
+Tile Game - Alpha v1.29 - 27/05/16
+-Reordered Packages to make room for Unit
+-Added Control variable, seperate to the selected variable in that it only allows unit selection
+
+Tile Game - Alpha v1.30 - 28/05/16
+-Updated Mudcrab sprites
+-Started work on normalising Entity Variables
+-Updated Spritesheet
+
+Tile Game - Alpha v1.31 - 08/06/16
+-Added getProgress method in timer
+-Removed most Interfaces
+-removed Player completely
+-Added Accuracy distance scaling
+-Moved, renamed and rethought a lot of entity tree methods
+-Added UnitStates
+-Fixed new idle function(still needs work)
+-Many more small tweaks
+-Allowed movement of any controlled units
+-globalization of vX and vY made animations consistent
+
+Tile Game - Alpha v1.32 - 09/06/16
+-added mouseMoved() into the click and release triggers in mouse manager to hopefully stop phantom clicks
+-Cleaned movement of slow controlled units
+-GameUserInterface cleaned up variables display of selected units a bit
+-UI clean up quite a lot to do with switching between textRectangleContainers for future unit selection
+-Added a Builder box in UI
+-GameUserInterface has many more functions that's only purpose is to make things clear and easy to follow/update
+
+Tile Game - Alpha v1.33 - 10/06/16
+-Fixed movement validity checks
+-Started work on switching UIcommand blocks and adding some real functionality
+-added commanded variable, for a buffer state between selected and controlled
+-Added interfaces to builder and barracks
+-Selected info now works on all entities
+-Tweaked unit variables a bit
+-Fixed health on Barracks
+
+Tile Game - Alpha v1.34 - 12/06/16
+-Lots of optimisation by using chunks and entityVisitor classes in entity manager
+-Only render entities on screen
+-Can no longer build on other units or solid blocks
+-Removed lots of instanceofs in gameuserinterface with some less than fancy methods
+-added deselection on death
+-removed deslection on death cos it caused more problems than it was worth
+-Looked into fireball explosion on death
+-Fixed deathtimer getting reset constantly when projectiles ended on walls
+-Messed with waves a bit and added more types
+-Static entities are team 0, allies team 1, waves team 2 now
+
+Tile Game - Alpha v1.35 - 13/06/16
+-Added Camera free roaming
+-entityManager.controlled is set to null when it has none
+-added secondary collision check to projectiles
+-Added even mroe methods to UIGameInterface and used for loops to save some space
+-All current units have a UIInterface
+-Added error catching in pathfinder
+-added error catching in chunkmanager
+-Added TileChecker class
+-Added validity checking on idle() in creature class
+-Major improvements to pathing and collision testing
+-Added selection from mouse inputs to end of tick//still need to make this work
+-Added mousecursor change from mouse inputs to end of tick
+-Added Userinterface change from idk what to end of tick
+-Added kill command to most things
+-Added movement on right click (command 0)
+-Added UICommandRectangle setting to end of tick like the rest (helps concurrent mod excpetion)
+-ObjectiveX and Y are centered, changed things to compensate
+-Added BUG towers now don't seem to shoot consistently
+-Fixed tower bug It was to do with the new lOS counting buildings as solid(added themselves as exception)
+
+Tile Game - Alpha v1.36 - 14/06/16
+-Fixed idle movement being weighted to bottom right
+-Added SpriteViewer Class
+-Added InputManager implemented by states
+-Added SpriteViewer to look at all sprites in Assets class
+-Messed with keyboard manager, gave it the input manager smilar to uimanager given to mousemanager
+-Started adding assets to Sprites arraylist
+
+Tile Game - Alpha v1.37 - 16/06/16
+-Added more options to Sprite Viewer
+-Added array functionality exceptions to on tile searches for lOS detections
+-Fixed chunks in entity
+-fixed getneighbooring chunks in chunkmanager
+-Fixed hit detection on projectiles
+-tried to fix pathing near buildings, think I made it worse
+
+Tile Game - Alpha v1.38 19/06/16
+-Entities no longer attempt to shoot through buildings
+-Changed how commands work a bit, more polymorphism
+-idle looks good again
+
+Tile Game - Alpha v1.39 24/06/16
+-changed package Flash to flash
+-Started Organising Entity methods
+-Set up hierarchy and stability in entity initialisation
+-Set up removal of entity timers on death
+
+Tile Game - Alpha v1.40 Date lost in time
+-Set up Creature variable methods
+-Added potential creatures and their stats https://docs.google.com/spreadsheets/d/1lPrEsaZHYl4_ru7exfqDfqwK_f_tVokDeH6iKXjBsA8/edit#gid=0
+-Normalised all entity variable functionalities
+-Some other small things
+
+Tile Game - Alpha v1.41 04/07/16
+-Looked into the getting of chunk neighbours and realised it was reasonably fucked, causing a lot of the walking through building issues
+-Implemented a render method and select boolean to chunks for debuggin purposes
+-Multiplied importance of H cost by 10 so diagonal movement now works properly in Astar
+-Changed checknode progression for detecting when you can and can't go diagonally, added a verfifyNode method in Astar
+-Tweaked entityManager onTile methods to allow for more parameters
+-Implemented a TileChecker class to avoid having to go into entityManager all the time
+
+Tile Game - Alpha v1.42 07/07/16
+-Fixed Chunkmanager neighbour checking
+-Fixed pathfinding
+-Broke melee combat
+-Added preliminary World Editor classes
+-Added ui.objects package
+
+Tile Game - Alpha v1.43 05/09/16
+-No idea, no idea at all
+
+Tile Game - Alpha v1.44 05/09/19
+-Moved to git

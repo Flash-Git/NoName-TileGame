@@ -25,7 +25,7 @@
 	-You can create battalions (on screen for easy selection)
 		-add
 		-remove
-	-You can select up to x units at once and give commands with drag square select zone or indivudally selecting them
+	-You can select up to x units at once and give commands with drag square select zone or individually selecting them
 		-Attack move
 		-Move
 		-Hold
