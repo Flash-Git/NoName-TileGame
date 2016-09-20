@@ -259,5 +259,10 @@ Tile Game - Alpha v1.42 07/07/16
 Tile Game - Alpha v1.43 05/09/16
 -No idea, no idea at all
 
-Tile Game - Alpha v1.44 05/09/19
+Tile Game - Alpha v1.44 05/09/16
 -Moved to git
+
+Tile Game - Alpha v1.45 20/09/16
+-Removed imports to classes in main package because intellij says they're unnecessary.
+-Started cleaning code comments up a bit
+-Added "Code Standards" Text File to adhere to

@@ -25,11 +25,8 @@ public abstract class State {
 	public static void setState(State state){
 		currentState = state;
 		UserInterface.setUserInterface(currentState.getUserInterface());
-
 	}
-	
-	
-	
+
 	public abstract InputManager getInputManager();
 	protected abstract void setInputManager(InputManager inputManager) ;
 
@@ -39,5 +36,4 @@ public abstract class State {
 	
 	public abstract UserInterface getUserInterface();
 	public abstract void setUserInterface(UserInterface userInterface);
-
 }

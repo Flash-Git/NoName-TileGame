@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import dev.flash.tilegame.timers.TimerManager;
-import dev.flash.tilegame.Handler;
 import dev.flash.tilegame.display.Display;
 import dev.flash.tilegame.gfx.Assets;
 import dev.flash.tilegame.gfx.GameCamera;
@@ -65,7 +64,8 @@ public class Game implements Runnable{
 	
 	private void init(){
 		handler = new Handler(this);
-		//Initial rules TODO import from file eventually
+
+		//Initial rules TODO import from file
 		ruleManager.addRule(new Rule(handler, "world", 1));//is paused
 		Rule pausedRule = new Rule(handler, "paused", false);
 		pausedRule.getRuleTimer().setGlobal(true);
@@ -74,18 +74,21 @@ public class Game implements Runnable{
 		ruleManager.addRule(new Rule(handler, "checkNum", 999));//how many cells entities will check to reach goal before giving up	
 		ruleManager.addRule(new Rule(handler, "entity collision", true));//allows entities to collide//TODO actually make use of this
 		ruleManager.addRule(new Rule(handler, "score", 0));//initial score
-		
+
+		//Create window
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
 		display.getFrame().addMouseListener(mouseManager);
 		display.getFrame().addMouseMotionListener(mouseManager);
 		display.getCanvas().addMouseListener(mouseManager);
 		display.getCanvas().addMouseMotionListener(mouseManager);
-		
+
+		//Load the game's assets
 		Assets.init();
 		
 		gameCamera = new GameCamera(handler, 0, 0);
-		
+
+		//Setting up the program's States
 		menuState = new MenuState(handler);
 		gameState = new GameState(handler);
 		spriteViewerState = new SpriteViewerState(handler);
@@ -93,16 +96,17 @@ public class Game implements Runnable{
 	}
 	
 	private void tick(double delta){
-		keyManager.updateKeys();//this is more of a failsafe than actually necessary
+		keyManager.updateKeys();//TODO this is more of a failsafe than actually necessary
 		if(State.getState() != null){
 			State.getState().tick(delta);
 		}
 	}
 	
 	private void render(){
+		//Draw frames before displaying them
 		bs = display.getCanvas().getBufferStrategy();
 		if(bs == null){
-			display.getCanvas().createBufferStrategy(3);//amount of stored up frames ready before pushing to screen
+			display.getCanvas().createBufferStrategy(2);//amount of stored up frames ready before pushing to screen
 			return;
 		}
 		g = bs.getDrawGraphics();
@@ -114,7 +118,7 @@ public class Game implements Runnable{
 		if(State.getState() != null){
 			State.getState().render(g);
 		}
-		
+
 		//End Draw
 		bs.show();
 		g.dispose();
@@ -127,11 +131,11 @@ public class Game implements Runnable{
 		double timePerTick = 1000000000/targetFps;
 		double delta = 0;
 		long now;
-		long lastTime= System.nanoTime();
+		long lastTime = System.nanoTime();
 		long timer = 0;
 		int ticks = 0;
 		long deltaTime;//better to have this be a long that converts to int or pass a long into tick()?
-		long deltaLastTime =System.nanoTime();;
+		long deltaLastTime = System.nanoTime();;
 		long deltaNow;
 		
 		
@@ -143,7 +147,7 @@ public class Game implements Runnable{
 			lastTime = now;
 			
 			if(delta>=1){//this should avoid lost or gained frames from speeding up or slowing down the game
-				deltaNow=System.nanoTime();
+				deltaNow = System.nanoTime();
 				deltaTime = deltaNow-deltaLastTime;
 
 				tick(deltaTime/1000000);//converts nano to milli
@@ -151,7 +155,7 @@ public class Game implements Runnable{
 				ticks++;
 				delta--;
 				tickCount++;
-				deltaLastTime=deltaNow;
+				deltaLastTime = deltaNow;
 			}
 			
 			if(timer>=1000000000){
