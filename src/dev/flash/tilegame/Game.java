@@ -58,20 +58,25 @@ public class Game implements Runnable{
 		this.height = height;
 		keyManager = new KeyManager();
 		mouseManager = new MouseManager();
-		ruleManager = new RuleManager(handler);//putting this in game over world, so restarts don't touch the rules
-		timerManager = new TimerManager(handler);
+		ruleManager = new RuleManager();//putting this in game over world, so restarts don't touch the rules
+		timerManager = new TimerManager();
 	}
 	
 	private void init(){
 		handler = new Handler(this);
-
+		keyManager.setHandler(handler);
 		//Initial rules TODO import from file
 		ruleManager.addRule(new Rule(handler, "world", 1));//is paused
 		Rule pausedRule = new Rule(handler, "paused", false);
 		pausedRule.getRuleTimer().setGlobal(true);
 		ruleManager.addRule(pausedRule);//is paused
+
+		Rule frKeyboardRule = new Rule(handler, "frKeyboard", false);
+		//frKeyboardRule.getRuleTimer().setGlobal(true);
+		ruleManager.addRule(frKeyboardRule);
+
 		ruleManager.addRule(new Rule(handler, "bounds", false));//show bounds
-		ruleManager.addRule(new Rule(handler, "checkNum", 999));//how many cells entities will check to reach goal before giving up	
+		ruleManager.addRule(new Rule(handler, "checkNum", 999));//how many cells entities will check to reach goal before giving up
 		ruleManager.addRule(new Rule(handler, "entity collision", true));//allows entities to collide//TODO actually make use of this
 		ruleManager.addRule(new Rule(handler, "score", 0));//initial score
 

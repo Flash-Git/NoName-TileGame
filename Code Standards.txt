@@ -1,0 +1,67 @@
+Entity Variable Order
+    1. Default Variables
+    2. Global Variables//Necessary baseline variables
+    3. Movement
+    4. Combat
+    5. Base
+    6. Player interaction
+    7. ArrayList of this entity's timers
+    8.
+    9.
+    10.
+
+Entity Coordinates
+    x is left most point of the entity
+    getX()
+    y is top most point of the entity
+    getY()
+    w is the width of the entity
+    getW()
+    h is the height of the entity
+    getH()
+    Used for:
+    -Placing entities into the world
+    -Giving entities the right size sprites and animations
+
+Collision Bounds
+    Area covering the in game entity
+    getCollBounds()
+    getCollBounds().getX()
+    getCollBounds().getY()
+    getCollBounds().getW()
+    getCollBounds().getH()
+    Used for:
+    -Collision detection
+
+Core Bounds
+    Small area in center of entity
+    getCoreBounds()
+    getCoreBounds().getX()
+    getCoreBounds().getY()
+    getCoreBounds().getW()
+    getCoreBounds().getH()
+    Used for:
+    -When 2 overlap, increment panic countdown
+        Allows a change of state that prioritises movement over all else
+        Before starting to take damage equal to 20% of the entity's health * individual resistance stat
+
+Center
+    Center of core/entity
+    getCenterX()= coreX()+coreW()/2
+    getCenterY()= coreY()+coreH()/2
+    Used for:
+    -Chunk stuff
+
+Coding rules:
+Currently no entity can be larger than 5 tiles (1chunk)
+    Because of how collision detection currently works
+    Checks current and neighbouring chunks
+    Not very efficient
+
+Chunklist stores the location of every entity
+    Not sure if this is the best way to handle this
+
+Everything is delayed by custom timers
+    All timers tick in the timers ArrayList
+    Not sure if this is the best way to handle this
+    Rename to Timerlist at the very least

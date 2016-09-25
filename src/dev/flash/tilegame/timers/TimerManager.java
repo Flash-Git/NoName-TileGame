@@ -1,17 +1,14 @@
 package dev.flash.tilegame.timers;
 
 import java.util.ArrayList;
-import dev.flash.tilegame.Handler;
 
 public class TimerManager {
 
-	private Handler handler;
 	private ArrayList<Timer> timers;
 	private ArrayList<Timer> toAdd;
 	private ArrayList<Timer> toRemove;
 	
-	public TimerManager(Handler handler){//Maybe substitute handler for world
-		this.handler = handler;
+	public TimerManager(){//Maybe substitute handler for world
 		timers = new ArrayList<Timer>();
 		toAdd = new ArrayList<Timer>();
 		toRemove = new ArrayList<Timer>();
@@ -88,14 +85,6 @@ public class TimerManager {
 	}
 		
 	//getters and setter
-	public Handler getHandler() {
-		return handler;
-	}
-
-	public void setHandler(Handler handler) {
-		this.handler = handler;
-	}
-
 
 	public ArrayList<Timer> getTimers() {
 		return timers;

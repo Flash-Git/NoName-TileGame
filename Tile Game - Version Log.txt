@@ -262,7 +262,18 @@ Tile Game - Alpha v1.43 05/09/16
 Tile Game - Alpha v1.44 05/09/16
 -Moved to git
 
-Tile Game - Alpha v1.45 20/09/16
+Tile Game - Alpha v1.45 -Cleaning_1- 20/09/16
 -Removed imports to classes in main package because intellij says they're unnecessary.
 -Started cleaning code comments up a bit
 -Added "Code Standards" Text File to adhere to
+
+Tile Game - Alpha v1.45 -Cleaning_2- 22/09/16
+-Added code standards to Code Standards
+-Added "Issues" text file
+
+Tile Game - Alpha v1.45 -Cleaning_3- 25/09/16
+-Added "frKeyboard" rule
+-Added handler to KeyManager
+-Removed Handler from rulemanager and timermanager, they were null anyways
+-Added frKeyboard functionality with error handling
+-Added some stuff to "Code Standards" and "Issues"

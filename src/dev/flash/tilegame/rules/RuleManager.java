@@ -2,15 +2,11 @@ package dev.flash.tilegame.rules;
 
 import java.util.ArrayList;
 
-import dev.flash.tilegame.Handler;
-
 public class RuleManager {
 
-	private Handler handler;
 	private ArrayList<Rule> rules;
 	
-	public RuleManager(Handler handler){
-		this.handler = handler;
+	public RuleManager(){
 		rules = new ArrayList<Rule>();
 	}
 
@@ -19,15 +15,7 @@ public class RuleManager {
 	}
 	
 	//getters and setter
-	public Handler getHandler() {
-		return handler;
-	}
-
-	public void setHandler(Handler handler) {
-		this.handler = handler;
-	}
-
-	public ArrayList<Rule> getRules() {
+		public ArrayList<Rule> getRules() {
 		return rules;
 	}
 

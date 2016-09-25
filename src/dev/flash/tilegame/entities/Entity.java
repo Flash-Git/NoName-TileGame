@@ -32,29 +32,26 @@ public abstract class Entity {
 	//COMBAT
 	protected float health;
 	protected float maxHealth;
-	protected float healthRegen;
-	protected Timer healthRegenTimer;//HEALTH REGEN IS APPLIED 5 TIMES A SECOND
+	protected float healthRegen;//health gained every second
+	protected Timer healthRegenTimer;
 	protected float speed;
 	protected boolean alive;
 	protected boolean persistent;
+	protected Timer deathTimer;//Time after Death before Removal
+	protected Timer lifeTimer;//Time before death
 	protected int team;
-	
+
 	//BASE
 	protected float baseHealth;
 	protected float baseHealthRegen;
 	protected int baseLifeTime;
 	protected int baseDeathTime;
-		
-	//Time after Death before Removal
-	protected Timer deathTimer;
-	//Time before death
-	protected Timer lifeTimer;
-	
+
 	//PLAYER INTERACTION
 	protected boolean selected;
 	protected String type;
 	
-	//TIMERS
+	//ArrayList of this Entity's timers
 	protected ArrayList<Timer> timers = new ArrayList<Timer>();
 
 	public Entity(Handler handler, float x, float y, int width, int height, int team){
@@ -88,7 +85,6 @@ public abstract class Entity {
 
 		relativeX = 0;
 		relativeY = 0;
-		
 	}
 	
 	protected void addTimers(){
@@ -114,13 +110,12 @@ public abstract class Entity {
 	//TICK RENDER ACCEPT
 
 	public void tick(double delta){
-		//Regenerating Health
+		//If entity has been alive longer than lifetime then kill, else, regen
 		if(alive){
-			regenHealth();
-			if(lifeTimer.isActive()){
-				if(lifeTimer.isDone()){
-					die();
-				}
+			if(lifeTimer.isDone()){
+				die();
+			}else{
+				regenHealth();
 			}
 		}else if(deathTimer.getDelay()==0||deathTimer.isDone()){
 			//TODO it appears to keep ticking dead things, at least the timers

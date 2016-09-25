@@ -1,0 +1,10 @@
+PATHING AND MOVEMENT
+-collision detection when pathing
+-Entities attempting to path through each other
+
+ERROR HANDLING
+
+Waves spawn points should be retrieved from World files
+
+KeyManager is ticked (updated) every tick, not sure if necessary
+

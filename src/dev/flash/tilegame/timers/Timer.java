@@ -3,7 +3,7 @@ package dev.flash.tilegame.timers;
 public class Timer {//TODO fix all waves, make a note of where every timer is
 
 	private double delay;
-	private double ellapsedTime;
+	private double elapsedTime;
 	private boolean active;
 	
 	private boolean global;
@@ -11,7 +11,7 @@ public class Timer {//TODO fix all waves, make a note of where every timer is
 	//CONSTRUCTORS
 	public Timer(double delay){
 		this.delay = delay;
-		ellapsedTime = 0;
+		elapsedTime = 0;
 		active = true;
 	}
 	
@@ -22,12 +22,12 @@ public class Timer {//TODO fix all waves, make a note of where every timer is
 	
 	public void tick(double delta) {
 		if(active){
-			ellapsedTime=  delta+ellapsedTime;
+			elapsedTime=  delta+elapsedTime;
 		}
 	}
 	
 	public void reset(){
-		ellapsedTime = 0;
+		elapsedTime = 0;
 	}
 
 	
@@ -35,8 +35,8 @@ public class Timer {//TODO fix all waves, make a note of where every timer is
 		if(active==false){
 			return false;
 		}
-		if(ellapsedTime>delay){
-			ellapsedTime =0;
+		if(elapsedTime>delay){
+			elapsedTime =0;
 			return true;
 		}else{
 			return false;
@@ -44,7 +44,7 @@ public class Timer {//TODO fix all waves, make a note of where every timer is
 	}
 	
 	public int getProgress(){
-		return (int) (ellapsedTime/delay);
+		return (int) (elapsedTime/delay);
 	}
 	
 	public double getDelay() {
