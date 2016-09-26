@@ -99,7 +99,6 @@ public class SpriteViewerWorld {//massive mess but works flawlessly
 			color=Color.gray;
 			return;
 		}
-		
 	}
 	
 	public void nextSprite(){

@@ -48,15 +48,16 @@ public abstract class UIObject {
 		if(hovering){
 			pressed(button);
 		}
-		onMouseMove(e);
+		//onMouseMove(e);
 	}
 	
 	
 	public void onMouseRelease(MouseEvent e, int button){
 		if(hovering){
+			hovering=false;
 			onClick(button);
 		}
-		onMouseMove(e);
+		//onMouseMove(e);
 	}
 	
 	//GETTERS AND SETTERS

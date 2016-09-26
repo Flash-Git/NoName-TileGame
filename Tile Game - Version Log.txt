@@ -277,3 +277,5 @@ Tile Game - Alpha v1.45 -Cleaning_3- 25/09/16
 -Removed Handler from rulemanager and timermanager, they were null anyways
 -Added frKeyboard functionality with error handling
 -Added some stuff to "Code Standards" and "Issues"
+
+Tile Game - Alpha v1.45 -Fixing Button Hovering Issue- 26/09/2016
