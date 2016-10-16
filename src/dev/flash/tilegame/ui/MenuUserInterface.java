@@ -21,9 +21,7 @@ public class MenuUserInterface extends UserInterface {
 		setupMainMenuUIManager();
 		setUIManager(mainMenuUIManager);
 	}
-	
 
-	
 	private void setupMainMenuUIManager() {
 		mainMenuUIManager = new UIManager(handler, getDefaultCursor());
 

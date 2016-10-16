@@ -59,7 +59,6 @@ public abstract class UserInterface {
 		if(currentUserInterface==null){
 			currentUserInterface = userInterface;
 			currentUserInterface.setUIManager(currentUserInterface.getUIManager());//refreshes mouse manager uiManager
-
 		}else{
 			updateUserInterface = true;
 			nextUserInterface = userInterface;

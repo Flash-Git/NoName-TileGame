@@ -9,11 +9,12 @@ import dev.flash.tilegame.input.MouseManager;
 
 public abstract class UIObject {
 
+	protected Handler handler;
+
 	protected float x, y;
 	protected int width, height;
 	protected Rectangle bounds;
 	protected boolean hovering = false;
-	protected Handler handler;
 	protected MouseManager mouseManager;
 	protected String name;
 	
@@ -37,6 +38,7 @@ public abstract class UIObject {
 
 
 	public void onMouseMove(MouseEvent e){
+		System.out.println(e.getX() + " "+ e.getY());
 		if(bounds.contains(e.getX(), e.getY())){
 			hovering = true;
 		}else{
@@ -46,18 +48,20 @@ public abstract class UIObject {
 	
 	public void onMousePressed(MouseEvent e, int button) {
 		if(hovering){
+			hovering = false;
 			pressed(button);
 		}
 		//onMouseMove(e);
+		hovering = false;
 	}
-	
-	
+
+
 	public void onMouseRelease(MouseEvent e, int button){
 		if(hovering){
-			hovering=false;
 			onClick(button);
 		}
 		//onMouseMove(e);
+		hovering = false;
 	}
 	
 	//GETTERS AND SETTERS
