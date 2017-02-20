@@ -1,6 +1,6 @@
 package dev.flash.tilegame.tiles;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class Tile {
@@ -15,7 +15,7 @@ public abstract class Tile {
 	
 	//CLASS
 	public static final int DEFAULT_COST_MULT = 1;
-
+	
 	public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
 	
 	protected BufferedImage texture;
@@ -25,51 +25,51 @@ public abstract class Tile {
 	
 	//weight this tile has on entity pathing
 	protected float weight;
-
-	public Tile(BufferedImage texture, int id){
+	
+	public Tile(BufferedImage texture, int id) {
 		this.texture = texture;
 		this.id = id;
 		
 		tiles[id] = this;
 	}
 	
-	public void tick(){
+	public void tick() {
 		
 	}
 	
-	public void render(Graphics g, int x, int y){
+	public void render(Graphics g, int x, int y) {
 		g.drawImage(texture, x, y, TILEWIDTH, TILEHEIGHT, null);
 	}
 	
 	//whether entities can travel on this tile
-	public boolean isSolid(){
+	public boolean isSolid() {
 		return false;
 	}
 	
-	public void setId(int id){
+	public void setId(int id) {
 		this.id = id;
 	}
 	
-	public int getId(){
+	public int getId() {
 		return id;
 	}
 	
-	public int getX(){
+	public int getX() {
 		return x;
 	}
 	
-	public int getY(){
+	public int getY() {
 		return y;
 	}
-
+	
 	public void setX(int x) {
-		this.x= x;
+		this.x = x;
 	}
 	
 	public void setY(int y) {
-		this.y= y;
+		this.y = y;
 	}
-
+	
 	public String getName() {
 		return null;
 	}
@@ -77,7 +77,7 @@ public abstract class Tile {
 	public float getWeight() {
 		return weight;
 	}
-
+	
 	public void setWeight(float weight) {
 		this.weight = weight;
 	}

@@ -5,39 +5,39 @@ import dev.flash.tilegame.Handler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyManager implements KeyListener{
-
+public class KeyManager implements KeyListener {
+	
 	private boolean[] keys;
 	
 	private InputManager inputManager;
 	
 	public boolean up, down, left, right, c, m, p, r, b, e, space;
-
+	
 	private Handler handler;
-
-	public KeyManager(){
+	
+	public KeyManager() {
 		keys = new boolean[256];
 	}
 	
-	public void updateKeys(){
+	public void updateKeys() {
 		try {
-			if (handler.getRuleManager().getRule("frKeyboard").getBoolVar()==true) {
+			if (handler.getRuleManager().getRule("frKeyboard").getBoolVar() == true) {
 				//AZERTY KEYBOARD
 				up = (keys[KeyEvent.VK_Z] || keys[KeyEvent.VK_UP]);
 				down = (keys[KeyEvent.VK_S] || keys[KeyEvent.VK_DOWN]);
 				left = (keys[KeyEvent.VK_Q] || keys[KeyEvent.VK_LEFT]);
 				right = (keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT]);
-			}else{
+			} else {
 				//QWERTY KEYBOARD
-				up = (keys[KeyEvent.VK_W]||keys[KeyEvent.VK_UP]);
-				down = (keys[KeyEvent.VK_S]||keys[KeyEvent.VK_DOWN]);
-				left = (keys[KeyEvent.VK_A]||keys[KeyEvent.VK_LEFT]);
-				right = (keys[KeyEvent.VK_D]||keys[KeyEvent.VK_RIGHT]);
+				up = (keys[KeyEvent.VK_W] || keys[KeyEvent.VK_UP]);
+				down = (keys[KeyEvent.VK_S] || keys[KeyEvent.VK_DOWN]);
+				left = (keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT]);
+				right = (keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT]);
 			}
-		}catch(NullPointerException e){
-			System.out.println("CAUGHT IT "+e.getStackTrace());
+		} catch (NullPointerException e) {
+			System.out.println("CAUGHT IT " + e.getStackTrace());
 		}
-
+		
 		c = keys[KeyEvent.VK_C];
 		m = keys[KeyEvent.VK_M];
 		p = keys[KeyEvent.VK_P];
@@ -51,14 +51,13 @@ public class KeyManager implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		keys[e.getKeyCode()] = true;
-
+		
 		updateKeys();
 		
 		
-
 		//updateKeys();
-
-		if(inputManager!=null)
+		
+		if (inputManager != null)
 			inputManager.keyPressed();
 	}
 	
@@ -66,7 +65,7 @@ public class KeyManager implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 		keys[e.getKeyCode()] = false;
 		updateKeys();
-		if(inputManager!=null)
+		if (inputManager != null)
 			inputManager.keyReleased();
 	}
 	
@@ -74,17 +73,17 @@ public class KeyManager implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		
 	}
-
+	
 	public InputManager getInputManager() {
 		return inputManager;
 	}
-
+	
 	public void setInputManager(InputManager inputManager) {
 		this.inputManager = inputManager;
 	}
-
-	public void setHandler(Handler handler){
+	
+	public void setHandler(Handler handler) {
 		this.handler = handler;
 	}
-
+	
 }

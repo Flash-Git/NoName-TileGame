@@ -1,19 +1,18 @@
 package dev.flash.tilegame.entities.units.buildings;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
 import dev.flash.tilegame.Handler;
 import dev.flash.tilegame.entities.units.creatures.Builder;
 import dev.flash.tilegame.entities.units.creatures.Wizard;
 import dev.flash.tilegame.gfx.Animation;
 import dev.flash.tilegame.gfx.Assets;
 
-public class Barracks extends Building {
+import java.awt.*;
 
-	public Barracks(Handler handler, float x, float y, int team) {
-		super(handler, x, y, Building.DEFAULT_WIDTH*2, (int) (Building.DEFAULT_HEIGHT*1.5), team);
+public class Barracks extends Building {
 	
+	public Barracks(Handler handler, float x, float y, int team) {
+		super(handler, x, y, Building.DEFAULT_WIDTH * 2, (int) (Building.DEFAULT_HEIGHT * 1.5), team);
+		
 		uiCommandBox = handler.getGameUserInterface().getUiBarracksCommandBox();
 	}
 	
@@ -25,17 +24,17 @@ public class Barracks extends Building {
 	
 	//VARIABLES
 	@Override
-	protected void initialiseVariables(){
+	protected void initialiseVariables() {
 		super.initialiseVariables();
-		ranged=false;
-		melee=false;
-		cost=250;
-		type="Barracks";
+		ranged = false;
+		melee = false;
+		cost = 250;
+		type = "Barracks";
 		bounds = new Rectangle(8, 12, 48, 36);
 	}
 	
 	@Override
-	protected void setBaseVariables(){
+	protected void setBaseVariables() {
 		super.setBaseVariables();
 		baseHealth = 15;
 		baseHealthRegen = 0.5f;
@@ -51,18 +50,18 @@ public class Barracks extends Building {
 	}
 	
 	@Override
-	protected void setScalingVariables(){
+	protected void setScalingVariables() {
 		super.setScalingVariables();
 		scalingHealth = 3f;
-		scalingHealthRegen= 0.1f;
+		scalingHealthRegen = 0.1f;
 		scalingDamage = 0f;
-		scalingAttackSpeed= 0.1f;
-		scalingAccuracy= 10;
-		scalingAttackRange=0;
-		scalingDetectionRange=0;
+		scalingAttackSpeed = 0.1f;
+		scalingAccuracy = 10;
+		scalingAttackRange = 0;
+		scalingDetectionRange = 0;
 		scalingSpeed = 0f;
 		scalingLifeTime = 0;
-		scalingDeathTime  =0;
+		scalingDeathTime = 0;
 		scalingIdleTime = 0;
 	}
 	
@@ -70,30 +69,28 @@ public class Barracks extends Building {
 	public void tick(double delta) {
 		super.tick(delta);
 	}
-
+	
 	@Override
 	public void render(Graphics g) {
 		super.render(g);
 	}
-
+	
 	@Override
-	public void doCommandAction(){
+	public void doCommandAction() {
 		super.doCommandAction();
-		if(commandNum==1){//Wizard
-			spawnCreature(new Wizard(handler, getCenterX(), getCenterY()+height, team));
-			objective=false;
-			defcon=5;
+		if (commandNum == 1) {//Wizard
+			spawnCreature(new Wizard(handler, getCenterX(), getCenterY() + height, team));
+			objective = false;
+			defcon = 5;
 			return;
 		}
-		if(commandNum==2){//Builder
-			spawnCreature(new Builder(handler, getCenterX(), getCenterY()+height, team));
-			objective=false;
-			defcon=5;
+		if (commandNum == 2) {//Builder
+			spawnCreature(new Builder(handler, getCenterX(), getCenterY() + height, team));
+			objective = false;
+			defcon = 5;
 			return;
 		}
 	}
-
-
-
+	
 	
 }

@@ -1,15 +1,14 @@
 package dev.flash.tilegame.entities.units.buildings;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
 import dev.flash.tilegame.Handler;
 import dev.flash.tilegame.entities.projectiles.Linear;
 import dev.flash.tilegame.gfx.Animation;
 import dev.flash.tilegame.gfx.Assets;
 
-public class Tower extends Building{
+import java.awt.*;
 
+public class Tower extends Building {
+	
 	public Tower(Handler handler, float x, float y, int team) {
 		super(handler, x, y, Building.DEFAULT_WIDTH, Building.DEFAULT_HEIGHT, team);
 		
@@ -24,19 +23,19 @@ public class Tower extends Building{
 	
 	//VARIABLES
 	@Override
-	protected void initialiseVariables(){
+	protected void initialiseVariables() {
 		super.initialiseVariables();
 		ranged = true;
 		melee = false;
 		cost = 150;
-		type ="Tower";
+		type = "Tower";
 		bounds = new Rectangle(8, 12, 16, 20);
 	}
 	
 	@Override
-	protected void setBaseVariables(){
+	protected void setBaseVariables() {
 		super.setBaseVariables();
-		baseHealth=15;
+		baseHealth = 15;
 		baseHealthRegen = 0.5f;
 		baseDamage = 2f;
 		baseAttackSpeed = 1f;
@@ -50,26 +49,26 @@ public class Tower extends Building{
 	}
 	
 	@Override
-	protected void setScalingVariables(){
+	protected void setScalingVariables() {
 		super.setScalingVariables();
 		scalingHealth = 3f;
-		scalingHealthRegen= 0.1f;
+		scalingHealthRegen = 0.1f;
 		scalingDamage = 1f;
-		scalingAttackSpeed= 0.1f;
-		scalingAccuracy= 10;
-		scalingAttackRange=0;
-		scalingDetectionRange=0;
-		scalingSpeed= 0f;
-		scalingLifeTime=0;
-		scalingDeathTime=0;
-		scalingIdleTime=0;
+		scalingAttackSpeed = 0.1f;
+		scalingAccuracy = 10;
+		scalingAttackRange = 0;
+		scalingDetectionRange = 0;
+		scalingSpeed = 0f;
+		scalingLifeTime = 0;
+		scalingDeathTime = 0;
+		scalingIdleTime = 0;
 	}
 	
 	@Override
 	public void tick(double delta) {
 		super.tick(delta);
 	}
-
+	
 	@Override
 	public void render(Graphics g) {
 		super.render(g);
@@ -79,5 +78,5 @@ public class Tower extends Building{
 	protected void fireProjectile(int tX, int tY) {
 		handler.getEntityManager().addToAddList(new Linear(handler, getCenterX(), getCenterY(), damage, this, tX, tY));
 	}
-
+	
 }

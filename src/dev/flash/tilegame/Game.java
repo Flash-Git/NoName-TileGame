@@ -1,9 +1,5 @@
 package dev.flash.tilegame;
 
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-
-import dev.flash.tilegame.timers.TimerManager;
 import dev.flash.tilegame.display.Display;
 import dev.flash.tilegame.gfx.Assets;
 import dev.flash.tilegame.gfx.GameCamera;
@@ -15,9 +11,13 @@ import dev.flash.tilegame.states.GameState;
 import dev.flash.tilegame.states.MenuState;
 import dev.flash.tilegame.states.SpriteViewerState;
 import dev.flash.tilegame.states.State;
+import dev.flash.tilegame.timers.TimerManager;
+
+import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 
-public class Game implements Runnable{
+public class Game implements Runnable {
 	//display handles JFrame
 	private Display display;
 	private BufferStrategy bs;
@@ -28,7 +28,7 @@ public class Game implements Runnable{
 	
 	//total number of ticks
 	public static int tickCount;
-
+	
 	//game variables
 	private int width, height;
 	private String title;
@@ -40,7 +40,7 @@ public class Game implements Runnable{
 	private MouseManager mouseManager;
 	private RuleManager ruleManager;
 	private TimerManager timerManager;
-
+	
 	//Camera
 	private GameCamera gameCamera;
 	
@@ -52,7 +52,7 @@ public class Game implements Runnable{
 	//Handler
 	private Handler handler;
 	
-	public Game(String title, int width, int height){
+	public Game(String title, int width, int height) {
 		this.title = title;
 		this.width = width;
 		this.height = height;
@@ -62,7 +62,7 @@ public class Game implements Runnable{
 		timerManager = new TimerManager();
 	}
 	
-	private void init(){
+	private void init() {
 		handler = new Handler(this);
 		keyManager.setHandler(handler);
 		//Initial rules TODO import from file
@@ -70,16 +70,16 @@ public class Game implements Runnable{
 		Rule pausedRule = new Rule(handler, "paused", false);
 		pausedRule.getRuleTimer().setGlobal(true);
 		ruleManager.addRule(pausedRule);//is paused
-
+		
 		Rule frKeyboardRule = new Rule(handler, "frKeyboard", false);
 		//frKeyboardRule.getRuleTimer().setGlobal(true);
 		ruleManager.addRule(frKeyboardRule);
-
+		
 		ruleManager.addRule(new Rule(handler, "bounds", false));//show bounds
 		ruleManager.addRule(new Rule(handler, "checkNum", 999));//how many cells entities will check to reach goal before giving up
 		ruleManager.addRule(new Rule(handler, "entity collision", true));//allows entities to collide//TODO actually make use of this
 		ruleManager.addRule(new Rule(handler, "score", 0));//initial score
-
+		
 		//Create window
 		display = new Display(title, width, height);
 		display.getFrame().addKeyListener(keyManager);
@@ -87,12 +87,12 @@ public class Game implements Runnable{
 		display.getFrame().addMouseMotionListener(mouseManager);
 		display.getCanvas().addMouseListener(mouseManager);
 		display.getCanvas().addMouseMotionListener(mouseManager);
-
+		
 		//Load the game's assets
 		Assets.init();
 		
 		gameCamera = new GameCamera(handler, 0, 0);
-
+		
 		//Setting up the program's States
 		menuState = new MenuState(handler);
 		gameState = new GameState(handler);
@@ -100,17 +100,17 @@ public class Game implements Runnable{
 		State.setState(menuState);
 	}
 	
-	private void tick(double delta){
+	private void tick(double delta) {
 		keyManager.updateKeys();//TODO this is more of a failsafe than actually necessary
-		if(State.getState() != null){
+		if (State.getState() != null) {
 			State.getState().tick(delta);
 		}
 	}
 	
-	private void render(){
+	private void render() {
 		//Draw frames before displaying them
 		bs = display.getCanvas().getBufferStrategy();
-		if(bs == null){
+		if (bs == null) {
 			display.getCanvas().createBufferStrategy(2);//amount of stored up frames ready before pushing to screen
 			return;
 		}
@@ -120,42 +120,42 @@ public class Game implements Runnable{
 		g.clearRect(0, 0, width, height);
 		
 		//Draw Here
-		if(State.getState() != null){
+		if (State.getState() != null) {
 			State.getState().render(g);
 		}
-
+		
 		//End Draw
 		bs.show();
 		g.dispose();
 	}
 	
 	@Override
-	public void run(){
+	public void run() {
 		init();
 		int targetFps = 144;
-		double timePerTick = 1000000000/targetFps;
+		double timePerTick = 1000000000 / targetFps;
 		double delta = 0;
 		long now;
 		long lastTime = System.nanoTime();
 		long timer = 0;
 		int ticks = 0;
 		long deltaTime;//better to have this be a long that converts to int or pass a long into tick()?
-		long deltaLastTime = System.nanoTime();;
+		long deltaLastTime = System.nanoTime();
 		long deltaNow;
 		
 		
-		while(running){
+		while (running) {
 			now = System.nanoTime();
-			timer += now-lastTime;
-			delta += (now - lastTime)/timePerTick;
+			timer += now - lastTime;
+			delta += (now - lastTime) / timePerTick;
 			
 			lastTime = now;
 			
-			if(delta>=1){//this should avoid lost or gained frames from speeding up or slowing down the game
+			if (delta >= 1) {//this should avoid lost or gained frames from speeding up or slowing down the game
 				deltaNow = System.nanoTime();
-				deltaTime = deltaNow-deltaLastTime;
-
-				tick(deltaTime/1000000);//converts nano to milli
+				deltaTime = deltaNow - deltaLastTime;
+				
+				tick(deltaTime / 1000000);//converts nano to milli
 				render();
 				ticks++;
 				delta--;
@@ -163,7 +163,7 @@ public class Game implements Runnable{
 				deltaLastTime = deltaNow;
 			}
 			
-			if(timer>=1000000000){
+			if (timer >= 1000000000) {
 				System.out.println("Ticks and Frames: " + ticks);
 				fps = ticks;
 				ticks = 0;
@@ -174,8 +174,8 @@ public class Game implements Runnable{
 	}
 	
 	//Creates the thread
-	public synchronized void start(){
-		if(running==true){
+	public synchronized void start() {
+		if (running == true) {
 			return;
 		}
 		running = true;
@@ -184,8 +184,8 @@ public class Game implements Runnable{
 	}
 	
 	//Stops the code cleanly
-	public synchronized void stop(){
-		if(!running){
+	public synchronized void stop() {
+		if (!running) {
 			return;
 		}
 		running = false;
@@ -200,15 +200,15 @@ public class Game implements Runnable{
 	public State getGameState() {
 		return gameState;
 	}
-
+	
 	public void setGameState(State gameState) {
 		this.gameState = gameState;
 	}
-
+	
 	public State getMenuState() {
 		return menuState;
 	}
-
+	
 	public void setMenuState(State menuState) {
 		this.menuState = menuState;
 	}
@@ -216,24 +216,24 @@ public class Game implements Runnable{
 	public State getSpriteViewerState() {
 		return spriteViewerState;
 	}
-
+	
 	public void setSpriteViewerState(State spriteViewerState) {
 		this.spriteViewerState = spriteViewerState;
 	}
-
-	public int getFPS(){
+	
+	public int getFPS() {
 		return fps;
 	}
 	
-	public KeyManager getKeyManager(){
+	public KeyManager getKeyManager() {
 		return keyManager;
 	}
 	
-	public MouseManager getMouseManager(){
+	public MouseManager getMouseManager() {
 		return mouseManager;
 	}
 	
-	public GameCamera getGameCamera(){
+	public GameCamera getGameCamera() {
 		return gameCamera;
 	}
 	
@@ -244,21 +244,21 @@ public class Game implements Runnable{
 	public TimerManager getTimerManager() {
 		return timerManager;
 	}
-
+	
 	public void setWidth(int width) {
 		this.width = width;
 	}
-
+	
 	public void setHeight(int height) {
 		this.height = height;
 	}
 	
-	public int getWidth(){
+	public int getWidth() {
 		return width;
 	}
 	
-	public int getHeight(){
+	public int getHeight() {
 		return height;
 	}
-
+	
 }

@@ -1,10 +1,10 @@
 package dev.flash.tilegame.entities.units;
 
 public class UnitObjectiveState extends UnitState {
-	public UnitObjectiveState(Unit unit){
+	public UnitObjectiveState(Unit unit) {
 		super(unit);
 	}
-
+	
 	@Override
 	public void tick(double delta) {
 		catchError();
@@ -12,8 +12,8 @@ public class UnitObjectiveState extends UnitState {
 		
 	}
 	
-	private void catchError(){			
-		if(!unit.hasObjective()){
+	private void catchError() {
+		if (!unit.hasObjective()) {
 			System.err.println("no objective");
 			return;
 		}

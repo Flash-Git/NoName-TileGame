@@ -1,14 +1,13 @@
 package dev.flash.tilegame.entities.units.buildings;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
 import dev.flash.tilegame.Handler;
 import dev.flash.tilegame.gfx.Animation;
 import dev.flash.tilegame.gfx.Assets;
 
-public class Wall extends Building{
+import java.awt.*;
 
+public class Wall extends Building {
+	
 	public Wall(Handler handler, float x, float y, int team) {
 		super(handler, x, y, Building.DEFAULT_WIDTH, Building.DEFAULT_HEIGHT, team);
 		
@@ -23,19 +22,19 @@ public class Wall extends Building{
 	
 	//VARIABLES
 	@Override
-	protected void initialiseVariables(){
+	protected void initialiseVariables() {
 		super.initialiseVariables();
 		ranged = false;
 		melee = false;
 		cost = 200;
-		type ="Wall";
+		type = "Wall";
 		bounds = new Rectangle(0, 0, 32, 32);
 	}
 	
 	@Override
-	protected void setBaseVariables(){
+	protected void setBaseVariables() {
 		super.setBaseVariables();
-		baseHealth=40;
+		baseHealth = 40;
 		baseHealthRegen = 0.02f;
 		baseDamage = 0f;
 		baseAttackSpeed = 1f;
@@ -49,26 +48,26 @@ public class Wall extends Building{
 	}
 	
 	@Override
-	protected void setScalingVariables(){
+	protected void setScalingVariables() {
 		super.setScalingVariables();
 		scalingHealth = 30f;
-		scalingHealthRegen= 0.01f;
+		scalingHealthRegen = 0.01f;
 		scalingDamage = 0f;
-		scalingAttackSpeed= 0.1f;
-		scalingAccuracy= 10;
-		scalingAttackRange=0;
-		scalingDetectionRange=0;
-		scalingSpeed= 0f;
-		scalingLifeTime=0;
-		scalingDeathTime=0;
-		scalingIdleTime=0;
+		scalingAttackSpeed = 0.1f;
+		scalingAccuracy = 10;
+		scalingAttackRange = 0;
+		scalingDetectionRange = 0;
+		scalingSpeed = 0f;
+		scalingLifeTime = 0;
+		scalingDeathTime = 0;
+		scalingIdleTime = 0;
 	}
 	
 	@Override
 	public void tick(double delta) {
 		super.tick(delta);
 	}
-
+	
 	@Override
 	public void render(Graphics g) {
 		super.render(g);

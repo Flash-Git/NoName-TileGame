@@ -1,12 +1,12 @@
 package dev.flash.tilegame.entities.projectiles;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
 import dev.flash.tilegame.Handler;
 import dev.flash.tilegame.entities.units.Unit;
 import dev.flash.tilegame.gfx.Animation;
 import dev.flash.tilegame.gfx.Assets;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Linear extends Projectile {
 	//Animations
@@ -25,7 +25,7 @@ public class Linear extends Projectile {
 	public void tick(double delta) {
 		super.tick(delta);
 	}
-		
+	
 	@Override
 	public void render(Graphics g) {
 		super.render(g);
@@ -34,16 +34,16 @@ public class Linear extends Projectile {
 	}
 	
 	@Override
-	protected void animate(){
+	protected void animate() {
 		animVert.tick();
 		animHori.tick();
 	}
 	
 	@Override
-	protected BufferedImage getCurrentAnimationFrame(){
-		if(Math.abs(getvX())>Math.abs(vY)){
+	protected BufferedImage getCurrentAnimationFrame() {
+		if (Math.abs(getvX()) > Math.abs(vY)) {
 			return animHori.getCurrentFrame();
-		}else{
+		} else {
 			return animVert.getCurrentFrame();
 		}
 	}

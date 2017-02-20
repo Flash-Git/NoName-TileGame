@@ -1,16 +1,15 @@
 package dev.flash.tilegame;
 
-import dev.flash.tilegame.tiles.ChunkManager;
-import dev.flash.tilegame.timers.TimerManager;
-import dev.flash.tilegame.ui.GameUserInterface;
-import dev.flash.tilegame.ui.UserInterface;
-import dev.flash.tilegame.Game;
 import dev.flash.tilegame.entities.EntityManager;
 import dev.flash.tilegame.gfx.GameCamera;
 import dev.flash.tilegame.input.KeyManager;
 import dev.flash.tilegame.input.MouseManager;
 import dev.flash.tilegame.menu.Menu;
 import dev.flash.tilegame.rules.RuleManager;
+import dev.flash.tilegame.tiles.ChunkManager;
+import dev.flash.tilegame.timers.TimerManager;
+import dev.flash.tilegame.ui.GameUserInterface;
+import dev.flash.tilegame.ui.UserInterface;
 import dev.flash.tilegame.worlds.SpriteViewerWorld;
 import dev.flash.tilegame.worlds.World;
 import dev.flash.tilegame.worlds.WorldEditor;
@@ -24,19 +23,19 @@ public class Handler {
 	private GameUserInterface gameUserInterface;
 	private WorldEditor worldEditor;
 	
-	public Handler (Game game){
+	public Handler(Game game) {
 		this.game = game;
 	}
 	
-	public GameCamera getGameCamera(){
+	public GameCamera getGameCamera() {
 		return game.getGameCamera();
 	}
 	
-	public KeyManager getKeyManager(){
+	public KeyManager getKeyManager() {
 		return game.getKeyManager();
 	}
 	
-	public MouseManager getMouseManager(){
+	public MouseManager getMouseManager() {
 		return game.getMouseManager();
 	}
 	
@@ -48,38 +47,38 @@ public class Handler {
 		return world.getEntityManager();
 	}
 	
-	public ChunkManager getChunkManager(){
+	public ChunkManager getChunkManager() {
 		return world.getChunkManager();
 	}
 	
 	public TimerManager getTimerManager() {
 		return game.getTimerManager();
-	}	
+	}
 	
-	public int getWidth(){
+	public int getWidth() {
 		return game.getWidth();
 	}
 	
-	public int getHeight(){
+	public int getHeight() {
 		return game.getHeight();
 	}
-
-	public int getFPS(){
+	
+	public int getFPS() {
 		return game.getFPS();
 	}
 	
 	public Game getGame() {
 		return game;
 	}
-
+	
 	public void setGame(Game game) {
 		this.game = game;
 	}
-
+	
 	public World getWorld() {
 		return world;
 	}
-
+	
 	public void setWorld(World world) {
 		this.world = world;
 	}
@@ -87,19 +86,19 @@ public class Handler {
 	public SpriteViewerWorld getSpriteViewerWorld() {
 		return spriteViewerWorld;
 	}
-
+	
 	public void setSpriteViewerWorld(SpriteViewerWorld spriteViewerWorld) {
 		this.spriteViewerWorld = spriteViewerWorld;
 	}
-
-	public Menu getMenu(){
+	
+	public Menu getMenu() {
 		return menu;
 	}
 	
 	public void setMenu(Menu menu) {
 		this.menu = menu;
 	}
-
+	
 	public void setUserInterface(UserInterface userInterface) {
 		this.userInterface = userInterface;
 	}
@@ -107,24 +106,23 @@ public class Handler {
 	public UserInterface getUserInterface() {
 		return userInterface;
 	}
-
+	
 	public void setGameUserInterface(GameUserInterface gameUserInterface) {
-		this.gameUserInterface=gameUserInterface;
+		this.gameUserInterface = gameUserInterface;
 		
 	}
 	
-	public GameUserInterface getGameUserInterface(){
+	public GameUserInterface getGameUserInterface() {
 		return gameUserInterface;
 	}
 	
 	public WorldEditor getWorldEditor() {
 		return worldEditor;
 	}
-
+	
 	public void setWorldEditor(WorldEditor worldEditor) {
 		this.worldEditor = worldEditor;
 	}
-
-
+	
 	
 }
